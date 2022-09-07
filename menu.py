@@ -31,6 +31,9 @@ def menu():
 
     elif user_input == options[5]:
         search_movies()
+
+    elif user_input == options[6]:
+        exit()
     
     else:
         menu()
