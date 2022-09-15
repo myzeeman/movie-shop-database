@@ -27,7 +27,7 @@ def print_table():
         gui.textbox(table)
     
     else:
-        print('there are no movies to display')
+        gui.msgbox('there are no movies to display')
 
 #if statement for testing
 if '__main__' == __name__:
