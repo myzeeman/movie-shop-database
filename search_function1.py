@@ -10,7 +10,6 @@ def search_movies():
     search = gui.enterbox(message)
 
     if (type(search) == str) and (len(search) > 0):
-        print('yo')
         c.execute('''SELECT * FROM movies WHERE name = ?''', [search])
         movie = c.fetchall()
         print(movie)
