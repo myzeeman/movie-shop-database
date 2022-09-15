@@ -19,7 +19,7 @@ def print_table():
 
         format = 'fancy_grid'
         table = tabulate(movie_details, tablefmt = format)
-        print(table)
+        gui.textbox(table)
     
     else:
         print('there are no movies to display')

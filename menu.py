@@ -1,4 +1,5 @@
 import easygui as gui
+from veiw_table import *
 
 def menu():
 
