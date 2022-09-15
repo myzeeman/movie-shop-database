@@ -1,12 +1,13 @@
 import easygui as gui
 from veiw_table import *
+from delete_movie import *
 
 def menu():
 
     '''menu function for user to choose what to do to the database'''
 
     #constant variables for gui button box:
-    options = ['Show Table', 'Print Table', 'New Movie', 'Change Movie',
+    options = ['Print Table', 'New Movie', 'Change Movie',
     'Delete Movie', 'Search Movies', 'Exit']
     msg = 'Please choose an option'
     title = 'Menu'
@@ -16,27 +17,25 @@ def menu():
 
     #runs chosen function:
     if user_input == options[0]:
-        show_table()
-
-    elif user_input == options[1]:
         print_table()
 
-    elif user_input == options[2]:
+    elif user_input == options[1]:
         new_movie()
 
-    elif user_input == options[3]:
+    elif user_input == options[2]:
         change_movie()
 
-    elif user_input == options[4]:
+    elif user_input == options[3]:
         delete_movie()
 
-    elif user_input == options[5]:
+    elif user_input == options[4]:
         search_movies()
 
-    elif user_input == options[6]:
+    elif user_input == options[5]:
         exit()
     
-    else:
-        menu()
+    menu()
+
+
 if __name__ == '__main__':
     menu()

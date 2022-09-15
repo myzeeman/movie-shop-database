@@ -1,15 +1,17 @@
 import sqlite3
 
-conn = sqlite3.connect('movies.db')
+conn = sqlite3.connect('movies.db') #connects to db which creates it
 
 c = conn.cursor()
 
-c.execute('''CREATE TABLE movies(name TEXT NOT NULL,
+#creates table for movies with conditions needed
+c.execute('''CREATE TABLE movies(name TEXT NOT NULL, 
                                  year INT CHECK(year > 1887 AND year < 2023),
                                  rating TEXT NOT NULL,
                                  length INT CHECK(length > 1 AND length < 1000),
                                  genre TEXT NOT NULL)''')
 
+#list of movies with their data:
 movies =   [['Ghostbusters',2016,'PG',116,'Comedy'],
             ['The Legend of Tarzan',2016,'PG',109,'Action'],
             ['Jason Bourne',2016,'PG',123,'Action'],
@@ -44,11 +46,14 @@ movies =   [['Ghostbusters',2016,'PG',116,'Comedy'],
             ['Big Hero 6',2014,'PG',108,'Animation'],
             ['The Drop',2014,'R',106,'Crime']]
 
+#inserts each movie into database:
 for i in movies:
     c.execute('''INSERT INTO movies VALUES(?,?,?,?,?)''', i)
 
+#prints movies database to show that movies have been entered correctly:
 c.execute('''SELECT rowid, * FROM movies''')
 details = c.fetchall()
 [print(i)for i in details]
 
+#commits all changes to database so they are saved when program is closed.
 conn.commit()
