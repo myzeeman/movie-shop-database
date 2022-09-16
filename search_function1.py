@@ -1,5 +1,6 @@
 import sqlite3
 import easygui as gui
+import tabulate
 
 def search_movies():
     '''Asks user to search for a movie and displays result'''
@@ -19,7 +20,20 @@ def search_movies():
         movie = c.fetchall()
 
         if len(movie) > 0:
-            print(movie)
+            keys = ['Name:', 'Year:', 'Rating:', 'Length:', 'Genre:']
+            format = 'fancy_grid'
+            movie = [keys, movie[0]]
+            table = tabulate.tabulate(movie, tablefmt = format)
+            gui.msgbox(table)
+
+
+        #    gui.msgbox(f'''
+        #    Name   : {movie[0][0]}
+        #    Year   : {movie[0][1]}
+        #    Rating : {movie[0][2]}
+        #    Length : {movie[0][3]}
+        #    Genre  : {movie[0][4]}
+        #    ''')
 
         else:
             print('Movie not found')
