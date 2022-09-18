@@ -19,25 +19,23 @@ def search_movies():
         c.execute('''SELECT * FROM movies WHERE name = ?''', [search])
         movie = c.fetchall()
 
+        #if movie name has one or more characters then will display
         if len(movie) > 0:
+
+            #tabulate constant variables:
             keys = ['Name:', 'Year:', 'Rating:', 'Length:', 'Genre:']
             format = 'fancy_grid'
             movie = [keys, movie[0]]
+
+            #making table and displaying it:
             table = tabulate.tabulate(movie, tablefmt = format)
             gui.msgbox(table)
 
 
-        #    gui.msgbox(f'''
-        #    Name   : {movie[0][0]}
-        #    Year   : {movie[0][1]}
-        #    Rating : {movie[0][2]}
-        #    Length : {movie[0][3]}
-        #    Genre  : {movie[0][4]}
-        #    ''')
-
         else:
             print('Movie not found')
-    #else then exits back to menu
 
+
+    #else then exits back to menu
 if __name__ == '__main__':
     search_movies()
