@@ -2,6 +2,7 @@ import easygui as gui
 from veiw_table import *
 from delete_movie import *
 from search_function1 import *
+from new_movie import *
 
 def menu():
 
