@@ -14,7 +14,7 @@ def print_table():
     movie_details = c.fetchall()
     
     #list keys for top of table:
-    feilds = ['#', 'Name', 'Release year', 'Rating', 'Length', 'Genre']
+    feilds = ['ID #', 'Name', 'Release year', 'Rating', 'Length', 'Genre']
 
     #puts feilds list at front of list
     movie_details.insert(0, feilds)
