@@ -8,7 +8,7 @@ c = conn.cursor()
 c.execute('''CREATE TABLE movies(name TEXT NOT NULL, 
                                  year INT CHECK(year > 1887 AND year < 2023),
                                  rating TEXT NOT NULL,
-                                 length INT CHECK(length > 1 AND length < 1000),
+                                 length INT CHECK(length > 0 AND length < 1001),
                                  genre TEXT NOT NULL)''')
 
 #list of movies with their data:
