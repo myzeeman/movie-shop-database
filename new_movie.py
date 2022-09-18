@@ -25,7 +25,7 @@ def new_movie():
             movie.append(name)
 
     #Entering age of movie with easy guis integer box error checking
-    message = 'Please input the age of the movie'
+    message = 'Please input the year the movie was made'
     while len(movie) < 2:
         default = 2022
         lowerbound = 1887
