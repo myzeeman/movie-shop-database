@@ -24,6 +24,7 @@ def print_table():
 
         format = 'fancy_grid'
         table = tabulate(movie_details, tablefmt = format)
+        title = 'Please go full screen'
         gui.textbox(table)
     
     else:

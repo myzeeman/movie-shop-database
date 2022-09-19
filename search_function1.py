@@ -31,10 +31,9 @@ def search_movies():
             table = tabulate.tabulate(movie, tablefmt = format)
             gui.msgbox(table)
 
-
         else:
-            print('Movie not found')
-
+            message = 'Movie not found'
+            gui.msgbox(message)
 
     #else then exits back to menu
 if __name__ == '__main__':
