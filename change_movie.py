@@ -1,5 +1,6 @@
 import sqlite3
 import easygui as gui
+import main
 
 def change_movie():
 
@@ -11,18 +12,35 @@ def change_movie():
     c.execute('''SELECT name FROM movies''')
     names = c.fetchall()
     names = [i[0] for i in names]
-
-    message = 'What movie would you like to change'
-    movie_choice = gui.choicebox(message, choices = names)
     
+    if len(names) > 1:
+
+        message = 'What movie would you like to change'
+        movie_choice = gui.choicebox(message, choices = names)
+
+    else:
+        message = (f'There are {len(names)} and there is a minimum of 2 \n' +
+                    'program will exit back to menu')
+        gui.msgbox(message)
+        main.menu()
+
+    if movie_choice == None:
+        main.menu()
+
     c.execute('''SELECT * FROM movies WHERE name = ?''', [movie_choice])
+
     movie = c.fetchall()
     movie = movie[0]
     movie = [i for i in movie]
     
-    categorys = ['Name', 'Release year', 'Rating', 'Length', 'Genre']
-    message = 'Please choose one or more perameter to change'
-    user_choice = gui.multchoicebox(message, choices = categorys)
+    user_choice = None
+
+    while user_choice == None:
+        categorys = ['Name', 'Release year', 'Rating', 'Length', 'Genre']
+        message = 'Please choose one or more perameter to change'
+        user_choice = gui.multchoicebox(message, choices = categorys)
+
+
 
     for category in user_choice:
         if category == 'Name':
@@ -102,12 +120,12 @@ def change_movie():
     else:
         movie.append(movie_choice)
         c.execute('''UPDATE movies
-                     Set name = ?,
-                     year = ?,
-                     rating = ?,
-                     length = ?,
-                     genre = ?
-                     WHERE name = ?''', movie)
+                    Set name = ?,
+                    year = ?,
+                    rating = ?,
+                    length = ?,
+                    genre = ?
+                    WHERE name = ?''', movie)
         conn.commit()
 
 
